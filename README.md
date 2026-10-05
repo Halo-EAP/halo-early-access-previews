@@ -1,7 +1,7 @@
-# 🪐 HALOS (Halo Early Access Previews)
+#  HALOS (Halo Early Access Preview)
 
-> A modern, fluid mobile operating system experience focusing on sleek visual aesthetics, intelligent desktop docking, and responsive user interfaces.
-
+> This Project is currently ran by me, myself, and I, but that's okay!
+> HalOS is a custom OS based on linux with the purpose of being able to save a lot of battery and lengthen the life of a small battery, its also meant to bring native EXE file support to Mobile Devices( Only Halo Phones unfortunatly) its also soon to have Airpod, Airdrop, And Galaxy Buds Support!
 [![GitHub Pages](https://img.shields.io/badge/site-live-brightgreen?style=flat-square)](https://halo-eap.github.io/halo-early-access-previews/)
 [![Status](https://img.shields.io/badge/status-active_alpha-blue?style=flat-square)](#)
 
@@ -13,15 +13,11 @@
 
 ---
 
-## 🛠 Project Structure
+## 🛠 What's Currently Happening?
 
-The web portal is hosted directly via **GitHub Pages** and structured cleanly across lightweight static pages:
+Currently there is not much I have done, Right now I am working On getting the Base system running and booting, after that I will start adjusting most of the UI and adding EXE support and the (probably) Popular Add-Ons Workshop!
 
-```text
-.
-├── index.html       # Landing page & early access sign-up
-├── about.html       # Project philosophy & feature breakdown
-├── status.html      # Real-time build status & patch notes
-├── preview.html     # Early access media showcase (UI/hardware screenshots)
-├── feedback.html    # Community feature wishlist & voting
-└── assets/          # Stylesheets, scripts, and image assets
+I am also working on a developer Console so that i can test some features that are not present.
+
+For any question or recommendations you have please email me at haloteamint@gmail.com! 
+
