@@ -1,402 +1,272 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HALOS | Halo Early Access Previews</title>
+    <title>HALOS | Halo Early Access</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #030712;
-            color: #f3f4f6;
-            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #090d16;
+            color: #e2e8f0;
         }
 
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Custom Glassmorphism Styles */
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(56, 189, 248, 0.15);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
+        /* Subtle backdrop blur panels */
         .glass-card {
-            background: rgba(30, 41, 59, 0.4);
+            background: rgba(17, 24, 39, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        .glass-card:hover {
-            border-color: rgba(56, 189, 248, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px -10px rgba(14, 165, 233, 0.3);
+        /* Smooth subtle glow effect */
+        .ambient-glow {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
         }
 
-        /* Neon Glow Effects */
-        .glow-cyan {
-            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.5);
-        }
-
-        .text-glow-cyan {
-            text-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
-        }
-
-        /* Grid Background Pattern */
-        .bg-grid-pattern {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
-
-        /* Pulse Animations */
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.35; transform: scale(1.08); }
-        }
-
-        .animate-pulse-slow {
-            animation: pulse-slow 8s infinite ease-in-out;
-        }
-
-        /* Custom Scrollbar */
+        /* Modern scrollbar styling */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #030712;
+            background: #090d16;
         }
         ::-webkit-scrollbar-thumb {
             background: #1e293b;
-            border-radius: 4px;
+            border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #0ea5e9;
+            background: #38bdf8;
         }
     </style>
 </head>
-<body class="relative min-h-screen bg-grid-pattern selection:bg-cyan-500 selection:text-black">
+<body class="relative min-h-screen selection:bg-sky-500 selection:text-slate-900">
 
-    <!-- Ambient Light Orbs -->
-    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-600/20 rounded-full blur-[140px] pointer-events-none animate-pulse-slow"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[160px] pointer-events-none animate-pulse-slow"></div>
+    <!-- Ambient Gradient Background Elements -->
+    <div class="ambient-glow top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="ambient-glow bottom-10 right-10"></div>
 
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-40 w-full backdrop-blur-md border-b border-slate-800/80 bg-gray-950/70">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-slate-950/70 border-b border-slate-800/60">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <div class="flex items-center gap-3 cursor-pointer">
-                <div class="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center glow-cyan">
-                    <i data-lucide="disc" class="w-6 h-6 text-black animate-spin-slow"></i>
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400">
+                    <i data-lucide="circle-dot" class="w-5 h-5"></i>
                 </div>
-                <div>
-                    <span class="text-xl font-bold tracking-wider text-white flex items-center gap-1.5">
-                        HALOS <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-950/80 text-cyan-400 border border-cyan-800/50 font-mono">EAP</span>
-                    </span>
-                    <p class="text-[10px] text-slate-400 font-mono -mt-1 tracking-widest uppercase">Halo Early Access</p>
-                </div>
-            </div>
+                <span class="text-lg font-bold tracking-tight text-white">HALOS</span>
+            </a>
 
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                <a href="#features" class="hover:text-cyan-400 transition-colors">OS Features</a>
-                <a href="#terminal" class="hover:text-cyan-400 transition-colors">Build Terminal</a>
-                <a href="#status" class="hover:text-cyan-400 transition-colors">System Status</a>
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#status" class="hover:text-white transition-colors">Status</a>
+                <a href="#signup" class="hover:text-white transition-colors">Sign Up</a>
             </nav>
 
-            <!-- Action Button -->
-            <div class="flex items-center gap-4">
-                <button onclick="openModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-semibold text-sm hover:brightness-110 transition-all duration-200 shadow-lg shadow-cyan-500/20 active:scale-95 flex items-center gap-2">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i>
-                    Join Early Access
-                </button>
-            </div>
+            <!-- CTA Header Button -->
+            <a href="#signup" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold tracking-wide border border-slate-700/80 transition-all">
+                Get Updates
+            </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative pt-16 pb-20 md:pt-28 md:pb-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-cyan-500/30 text-cyan-300 text-xs font-mono mb-8">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-                <span>HALOS Channel v0.9.4 Early Access Live</span>
+    <main class="relative z-10">
+        <!-- Hero & Sign Up Section -->
+        <section id="signup" class="pt-20 pb-24 md:pt-32 md:pb-36 max-w-4xl mx-auto px-6 text-center">
+            <!-- Status Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-8">
+                <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                <span>Early Access Testing Active</span>
             </div>
 
             <!-- Headline -->
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
-                The Next Generation Mobile OS <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 text-glow-cyan">Preview Engine</span>
+            <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
+                Halo Early Access
             </h1>
-
-            <!-- Subheading -->
-            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                Experience raw performance, modular UI extensions, and next-gen hardware orchestration before public release.
+            <p class="mt-4 text-lg sm:text-xl text-slate-400 font-light max-w-xl mx-auto">
+                Experience the next iteration of HALOS. Simple, intuitive, and designed around what matters most.
             </p>
 
-            <!-- Hero Action Buttons -->
-            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-cyan-400 text-gray-950 font-bold text-base hover:bg-cyan-300 transition-all duration-200 shadow-xl shadow-cyan-500/25 flex items-center justify-center gap-3 group">
-                    <span>Request Build Access</span>
-                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                </button>
-                <a href="#terminal" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-slate-200 font-semibold text-base hover:bg-slate-800/50 transition-all duration-200 flex items-center justify-center gap-2 border border-slate-700/60">
-                    <i data-lucide="terminal" class="w-5 h-5 text-cyan-400"></i>
-                    <span>Inspect Build Stream</span>
-                </a>
-            </div>
+            <!-- Minimal Sign Up Form -->
+            <div class="mt-10 max-w-md mx-auto">
+                <form id="signupForm" onsubmit="handleSignup(event)" class="flex flex-col sm:flex-row gap-3">
+                    <input 
+                        type="email" 
+                        required 
+                        placeholder="Enter your email" 
+                        class="w-full px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 text-sm transition-all"
+                    >
+                    <button 
+                        type="submit" 
+                        class="px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition-all whitespace-nowrap shadow-lg shadow-sky-500/10"
+                    >
+                        Join Testing
+                    </button>
+                </form>
 
-            <!-- Live Stats Banner -->
-            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                <div class="glass-panel p-4 rounded-2xl text-center">
-                    <p class="text-xs font-mono text-slate-400 uppercase">Target Core</p>
-                    <p class="text-2xl font-bold text-cyan-400 mt-1">Linux 6.12</p>
-                </div>
-                <div class="glass-panel p-4 rounded-2xl text-center">
-                    <p class="text-xs font-mono text-slate-400 uppercase">Active Tester Pool</p>
-                    <p class="text-2xl font-bold text-white mt-1" id="testerCount">1,420</p>
-                </div>
-                <div class="glass-panel p-4 rounded-2xl text-center">
-                    <p class="text-xs font-mono text-slate-400 uppercase">Preview Channel</p>
-                    <p class="text-2xl font-bold text-cyan-400 mt-1">Nightly Alpha</p>
-                </div>
-                <div class="glass-panel p-4 rounded-2xl text-center">
-                    <p class="text-xs font-mono text-slate-400 uppercase">Build Health</p>
-                    <p class="text-2xl font-bold text-emerald-400 mt-1">99.8% Stable</p>
+                <!-- Micro Copy -->
+                <p class="mt-4 text-xs text-slate-500">
+                    Sign up to stay updated on current testing progress and join early preview rings.
+                </p>
+
+                <!-- Toast Confirmation Banner -->
+                <div id="successToast" class="hidden mt-4 p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-sm flex items-center justify-center gap-2">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                    <span>You're on the list! We'll send build updates straight to your inbox.</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Feature Preview Grid -->
-    <section id="features" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400">Experimental Modules</h2>
-                <p class="text-3xl sm:text-4xl font-bold text-white mt-2">What's Inside HALOS Previews?</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                    <div class="w-12 h-12 rounded-2xl bg-cyan-950/80 border border-cyan-800/50 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="cpu" class="w-6 h-6"></i>
+        <!-- Status Section -->
+        <section id="status" class="py-20 bg-slate-950/50 border-t border-slate-800/40">
+            <div class="max-w-4xl mx-auto px-6">
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                    <div>
+                        <span class="text-xs font-semibold tracking-widest text-sky-400 uppercase">System Status</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Testing Progress & Builds</h2>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Modular Kernel Microvisor</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Isolate phone hardware subsystems directly in user-space for zero latency driver sandbox testing and custom HAL layers.
+                    <!-- Live Indicator Pill -->
+                    <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass-card self-start md:self-auto">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                        <span class="text-xs font-medium text-slate-300">All Systems Operational</span>
+                    </div>
+                </div>
+
+                <!-- Current Version Badge Card -->
+                <div class="glass-card p-6 rounded-2xl mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-slate-800/80 flex items-center justify-center text-sky-400">
+                            <i data-lucide="activity" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-400 font-medium">Current Preview Ring</p>
+                            <p class="text-base font-semibold text-white">HALOS Alpha v0.4.2</p>
+                        </div>
+                    </div>
+                    <span class="px-3 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">Updated 2 days ago</span>
+                </div>
+
+                <!-- Update Log Cards -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Recent Testing Notes</h3>
+
+                    <!-- Log Item 1 -->
+                    <div class="glass-card p-6 rounded-2xl space-y-2">
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span class="font-medium text-sky-400">Build Update • v0.4.2</span>
+                            <span>October 2, 2026</span>
+                        </div>
+                        <h4 class="text-base font-semibold text-white">Fluid Motion & Windowing Improvements</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Refined overall window animation curves and reduced latency during app transitions. System responsiveness is now noticeably smoother on test hardware.
+                        </p>
+                    </div>
+
+                    <!-- Log Item 2 -->
+                    <div class="glass-card p-6 rounded-2xl space-y-2">
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span class="font-medium text-sky-400">Testing Ring • v0.4.0</span>
+                            <span>September 24, 2026</span>
+                        </div>
+                        <h4 class="text-base font-semibold text-white">Initial Private Preview Release</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Deployed the first closed preview ring to early testers. Focused primarily on battery efficiency and underlying system service stability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 border-t border-slate-800/40">
+            <div class="max-w-4xl mx-auto px-6">
+                <!-- Section Header -->
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-semibold tracking-widest text-sky-400 uppercase">About HALOS</span>
+                    <h2 class="text-3xl font-bold text-white mt-2">Designed for Clarity & Speed</h2>
+                    <p class="text-sm text-slate-400 mt-3 leading-relaxed">
+                        HALOS reimagines the mobile environment by focusing on liquid aesthetics, lightweight performance, and distraction-free interaction.
                     </p>
                 </div>
 
-                <!-- Feature 2 -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                    <div class="w-12 h-12 rounded-2xl bg-cyan-950/80 border border-cyan-800/50 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="layers" class="w-6 h-6"></i>
+                <!-- 3 Pillar Feature Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Pillar 1 -->
+                    <div class="glass-card p-6 rounded-2xl space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-white">Liquid Interface</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Smooth, intuitive visual layers with responsive glass elements that react gracefully to your touch.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Fluid Glass UI Compositor</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Hardware-accelerated liquid motion graphics framework built with vulkan shaders for high refresh display panels.
-                    </p>
-                </div>
 
-                <!-- Feature 3 -->
-                <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
-                    <div class="w-12 h-12 rounded-2xl bg-cyan-950/80 border border-cyan-800/50 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    <!-- Pillar 2 -->
+                    <div class="glass-card p-6 rounded-2xl space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-white">Lightweight Core</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Built from the ground up to eliminate background bloat and maximize your device's battery life.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Zero-Trust Telemetry</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Privacy-first automated crash reports. Encrypted diagnostic payloads stay local until explicitly approved by the tester.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Terminal & Interactive Console Section -->
-    <section id="terminal" class="py-20 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-panel rounded-3xl overflow-hidden border border-slate-700/80 shadow-2xl">
-                <!-- Terminal Header -->
-                <div class="bg-gray-950/80 px-6 py-4 flex items-center justify-between border-b border-slate-800">
-                    <div class="flex items-center gap-2">
-                        <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
-                        <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
-                        <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-                        <span class="ml-4 font-mono text-xs text-slate-400">halos-preview-console ~ v0.9.4-alpha</span>
+                    <!-- Pillar 3 -->
+                    <div class="glass-card p-6 rounded-2xl space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400">
+                            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-white">Fluid Docking</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Organize your workspace naturally with adaptive layouts that fit how you multitask.
+                        </p>
                     </div>
-                    <span class="text-xs font-mono text-cyan-400 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                        STREAM ACTIVE
-                    </span>
-                </div>
-
-                <!-- Terminal Body -->
-                <div class="p-6 font-mono text-sm h-80 overflow-y-auto bg-gray-950/90 text-slate-300 space-y-2" id="consoleOutput">
-                    <p class="text-slate-500">[SYSTEM INIT] HALOS Early Access Build Console online.</p>
-                    <p class="text-slate-500">[KERNEL] Loading preview modules: gpu_vulkan, touch_haptics, baseband_v2...</p>
-                    <p class="text-cyan-400">[READY] Type <span class="text-white font-bold">'help'</span> or <span class="text-white font-bold">'status'</span> to query preview metrics.</p>
-                </div>
-
-                <!-- Terminal Input -->
-                <div class="bg-gray-900/60 p-4 border-t border-slate-800/80 flex items-center gap-3">
-                    <span class="text-cyan-400 font-mono font-bold">$</span>
-                    <input type="text" id="consoleInput" placeholder="Try typing 'status', 'features', or 'join'..." class="w-full bg-transparent border-none text-white font-mono text-sm focus:outline-none placeholder-slate-600">
-                    <button onclick="handleConsoleSubmit()" class="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded font-mono text-xs hover:bg-cyan-500/30">Exec</button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Sign-up Modal -->
-    <div id="signupModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md hidden transition-all duration-300">
-        <div class="glass-panel w-full max-w-lg p-8 rounded-3xl relative border border-cyan-500/30 shadow-2xl">
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-
-            <!-- Modal Content -->
-            <div class="text-center mb-6">
-                <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 border border-cyan-400/30 text-cyan-400 flex items-center justify-center mx-auto mb-4">
-                    <i data-lucide="key-round" class="w-6 h-6"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-white">HALOS Early Access Pass</h3>
-                <p class="text-sm text-slate-400 mt-1">Get early OTA preview builds directly on your test device.</p>
-            </div>
-
-            <!-- Modal Form -->
-            <form id="waitlistForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-mono text-slate-400 uppercase mb-2">Developer Name</label>
-                    <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-sans">
-                </div>
-                <div>
-                    <label class="block text-xs font-mono text-slate-400 uppercase mb-2">GitHub Username / Email</label>
-                    <input type="text" required placeholder="username@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-sans">
-                </div>
-                <div>
-                    <label class="block text-xs font-mono text-slate-400 uppercase mb-2">Test Device Target</label>
-                    <select class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white focus:outline-none focus:border-cyan-400 font-sans">
-                        <option>HALO Phone Prototype Alpha</option>
-                        <option>ARM64 Generic System Image (GSI)</option>
-                        <option>QEMU Virtual Emulator</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold text-base hover:brightness-110 transition-all mt-2">
-                    Submit Access Request
-                </button>
-            </form>
-
-            <div id="modalSuccess" class="hidden text-center py-6">
-                <i data-lucide="check-circle-2" class="w-12 h-12 text-emerald-400 mx-auto mb-3"></i>
-                <h4 class="text-xl font-bold text-white">Application Received!</h4>
-                <p class="text-sm text-slate-400 mt-2">Check your GitHub notifications for build token authorization.</p>
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800/80 py-12 bg-gray-950/80 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <i data-lucide="disc" class="w-5 h-5 text-cyan-400"></i>
-                <span class="text-sm text-slate-400 font-mono">© 2026 HALOS Early Access Program. Hosted on GitHub Pages.</span>
-            </div>
-            <div class="flex items-center gap-6 text-sm text-slate-500 font-mono">
-                <a href="https://github.com/Halo-EAP" target="_blank" class="hover:text-cyan-400 transition-colors">GitHub Repository</a>
-                <a href="#privacy" class="hover:text-cyan-400 transition-colors">Privacy</a>
+    <footer class="border-t border-slate-800/60 py-8 bg-slate-950/80">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>© 2026 Halo Early Access Previews.</p>
+            <div class="flex items-center gap-6">
+                <a href="#about" class="hover:text-slate-300 transition-colors">About</a>
+                <a href="#status" class="hover:text-slate-300 transition-colors">Status</a>
+                <a href="#signup" class="hover:text-slate-300 transition-colors">Sign Up</a>
             </div>
         </div>
     </footer>
 
-    <!-- Interactive Logic JavaScript -->
+    <!-- Interactive Logic -->
     <script>
-        // Initialize Lucide Icons
+        // Initialize Lucide icons
         lucide.createIcons();
 
-        // Modal Controls
-        function openModal() {
-            const modal = document.getElementById('signupModal');
-            modal.classList.remove('hidden');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('signupModal');
-            modal.classList.add('hidden');
-        }
-
-        function handleFormSubmit(e) {
+        // Handle Signup Form Submission
+        function handleSignup(e) {
             e.preventDefault();
-            document.getElementById('waitlistForm').classList.add('hidden');
-            const successView = document.getElementById('modalSuccess');
-            successView.classList.remove('hidden');
+            const form = document.getElementById('signupForm');
+            const toast = document.getElementById('successToast');
+            
+            form.classList.add('hidden');
+            toast.classList.remove('hidden');
             lucide.createIcons();
-
-            // Update tester counter smoothly
-            const countEl = document.getElementById('testerCount');
-            let count = parseInt(countEl.innerText.replace(',', ''));
-            countEl.innerText = (count + 1).toLocaleString();
-        }
-
-        // Terminal Interactive Commands
-        const consoleInput = document.getElementById('consoleInput');
-        const consoleOutput = document.getElementById('consoleOutput');
-
-        consoleInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                handleConsoleSubmit();
-            }
-        });
-
-        function handleConsoleSubmit() {
-            const cmd = consoleInput.value.trim().toLowerCase();
-            if (!cmd) return;
-
-            // Output user input
-            appendConsole(`$ ${cmd}`, 'text-slate-200 font-bold');
-            consoleInput.value = '';
-
-            // Process Commands
-            setTimeout(() => {
-                if (cmd === 'help') {
-                    appendConsole('Available commands: status, features, join, clear, version', 'text-cyan-400');
-                } else if (cmd === 'status') {
-                    appendConsole('Kernel: 6.12-halos-preview | Channel: Alpha | Health: 99.8%', 'text-emerald-400');
-                } else if (cmd === 'features') {
-                    appendConsole('Active Previews: [Microvisor, Fluid Compositor, Zero-Trust Diagnostics]', 'text-cyan-300');
-                } else if (cmd === 'join') {
-                    appendConsole('Opening Access Request Dialog...', 'text-amber-400');
-                    openModal();
-                } else if (cmd === 'clear') {
-                    consoleOutput.innerHTML = '';
-                } else if (cmd === 'version') {
-                    appendConsole('HALOS Build System Engine v0.9.4-EAP (2026 Release)', 'text-slate-400');
-                } else {
-                    appendConsole(`Command not recognized: '${cmd}'. Type 'help' for options.`, 'text-rose-400');
-                }
-            }, 100);
-        }
-
-        function appendConsole(text, colorClass) {
-            const p = document.createElement('p');
-            p.className = colorClass;
-            p.innerText = text;
-            consoleOutput.appendChild(p);
-            consoleOutput.scrollTop = consoleOutput.scrollHeight;
         }
     </script>
 </body>
